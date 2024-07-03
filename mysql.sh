@@ -5,6 +5,9 @@ TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
 
+echo "Please enter DB Password:"
+read -s mysql_root_password
+
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -52,7 +55,7 @@ VALIDATE $? "Starting Mysql-server"
 mysql -h db.iamzaheer.online -uroot -pExpenseApp@1 -e 'show databases;' &>>$LOGFILE
 if [ $? -ne 0 ]
 then 
-     mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
      VALIDATE $? "Mysql Root Password Setup"
 else
     echo -e "Mysql Root Password is already setup...$C SKIP $N"
