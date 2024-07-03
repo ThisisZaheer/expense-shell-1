@@ -5,8 +5,6 @@ TIMESTAMP=$(date +%F-%H-%M-%S)
 USERID=$(id -u)
 LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
 
-echo "Please enter DB Password"
-read -s PASSWORD
 
 R="\e[31m"
 G="\e[32m"
@@ -53,7 +51,7 @@ cd /usr/share/nginx/html &>>$LOGFILE
 unzip /tmp/frontend.zip &>>$LOGFILE
 VALIDATE $? "Extracting the frontend code"
 
-cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf &>>$LOGFILE
+cp /home/ec2-user/expense-shell-1/expense.conf /etc/nginx/default.d/expense.conf &>>$LOGFILE
 VALIDATE $? "Copied Expense Configuration"
 
 systemctl restart nginx &>>$LOGFILE
