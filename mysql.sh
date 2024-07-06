@@ -4,6 +4,8 @@ source ./common.sh
 
 set -e
 
+trap 'failure ${LINENO} "$BASH_COMMAND' ERR
+
 check_root
 
 echo "Please enter DB Password:"
