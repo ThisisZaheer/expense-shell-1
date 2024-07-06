@@ -2,19 +2,21 @@
 
 source ./common.sh
 
+set -e
+
 check_root
 
 echo "Please enter DB Password:"
 read -s mysql_root_password
 
 dnf install mysql-server -y &>>LOGFILE
-VALIDATE $? "Installing Mysql-server"
+#VALIDATE $? "Installing Mysql-server"
 
 systemctl enable mysqld &>>LOGFILE
-VALIDATE $? "Enabling Mysql-server"
+#VALIDATE $? "Enabling Mysql-server"
 
 systemctl start mysqld &>>LOGFILE
-VALIDATE $? "Starting Mysql-server"
+#VALIDATE $? "Starting Mysql-server"
 
 
 #mysql_secure_installation --set-root-pass ExpenseApp@1
@@ -28,7 +30,7 @@ mysql -h db.iamzaheer.online -uroot -p${mysql_root_password} -e 'show databases;
 if [ $? -ne 0 ]
 then 
      mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
-     VALIDATE $? "Mysql Root Password Setup"
+     #VALIDATE $? "Mysql Root Password Setup"
 else
     echo -e "Mysql Root Password is already setup...$C SKIP $N"
 fi
