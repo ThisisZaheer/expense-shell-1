@@ -4,14 +4,15 @@ source ./common.sh
 
 set -e
 
-trap 'failure ${LINENO} "$BASH_COMMAND' ERR
+# trap 'failure ${LINENO} "$BASH_COMMAND' ERR
+error
 
 check_root
 
 echo "Please enter DB Password:"
 read  mysql_root_password
 
-dnf install mysql-server -y &>>LOGFILE
+dnf install mysql-servery -y &>>LOGFILE
 #VALIDATE $? "Installing Mysql-server"
 
 systemctl enable mysqld &>>LOGFILE

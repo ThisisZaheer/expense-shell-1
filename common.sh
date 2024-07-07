@@ -5,6 +5,13 @@ TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
 
+error(){
+
+    echo "error occured at line:$1, error command:$2"
+}
+
+trap 'error ${LINENO} $"BASH_COMMAND"' ERR
+
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"

@@ -2,8 +2,8 @@
 
 set -e
 
-trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
-
+# trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
+error 
 source ./common.sh
 
 check_root

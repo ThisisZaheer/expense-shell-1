@@ -2,7 +2,8 @@
 
 set -e
 
-trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
+# trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
+error
 
 source ./common.sh
 
@@ -11,7 +12,7 @@ check_root
 dnf install nginx -y &>>$LOGFILE
 #VALIDATE $? "Installing Nginx"
 
-systemctl enable nginxyy &>>$LOGFILE
+systemctl enable nginx &>>$LOGFILE
 #VALIDATE $? "Enabling Nginx"
 
 systemctl start nginx &>>$LOGFILE
