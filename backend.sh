@@ -4,7 +4,7 @@ set -e
 
 # trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
-error 
+
 source ./common.sh
 
 check_root
@@ -12,6 +12,7 @@ check_root
 echo "Please enter DB password:"
 read  mysql_root_password
 
+error 
 
 dnf module disable nodejs -y &>>$LOGFILE
 # VALIDATE $? "Disabling default nodejs"
