@@ -17,7 +17,7 @@ error
 dnf module disable nodejs -y &>>$LOGFILE
 # VALIDATE $? "Disabling default nodejs"
 
-dnf module enable nodejs:2000 -y &>>$LOGFILE
+dnf module enable nodejs:20 -y &>>$LOGFILE
 # VALIDATE $? "Enabling nodejs:20 version"
 
 dnf install nodejs -y &>>$LOGFILE
