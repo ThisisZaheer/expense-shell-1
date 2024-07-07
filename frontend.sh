@@ -11,7 +11,7 @@ check_root
 dnf install nginx -y &>>$LOGFILE
 #VALIDATE $? "Installing Nginx"
 
-systemctl enable nginx &>>$LOGFILE
+systemctl enable nginxyy &>>$LOGFILE
 #VALIDATE $? "Enabling Nginx"
 
 systemctl start nginx &>>$LOGFILE
